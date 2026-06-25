@@ -1,0 +1,1362 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Café Tico distribuye cafés premium de Costa Rica en el Centro y NEA de Argentina, Uruguay y Paraguay."
+  />
+  <title>Café Tico | Café premium de Costa Rica</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" type="image/png" href="img/redlogo.png" />
+
+  <style>
+    :root {
+      --color-bg: #0d1b2a;
+      --color-surface: #1b2a3e;
+      --color-text: #e8dfc0;
+      --color-text-muted: rgba(232, 223, 192, 0.66);
+      --color-text-soft: rgba(232, 223, 192, 0.45);
+      --color-accent: #b22222;
+      --color-accent-bright: #d32f2f;
+      --border-subtle: rgba(232, 223, 192, 0.12);
+      --shadow-card: 0 24px 70px rgba(0, 0, 0, 0.26);
+      --font-display: "Playfair Display", Georgia, serif;
+      --font-body: "Lato", Arial, sans-serif;
+      --container: 1120px;
+      --nav-height: 76px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: 1rem;
+      z-index: 200;
+      transform: translateY(-160%);
+      padding: 0.7rem 1rem;
+      background: var(--color-text);
+      color: var(--color-bg);
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .container {
+      width: min(calc(100% - 12vw), var(--container));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 6rem 0;
+      scroll-margin-top: calc(var(--nav-height) + 1rem);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2.5rem, 5vw, 4.5rem);
+      align-items: center;
+    }
+
+    .section-label,
+    .hero-eyebrow,
+    .eyebrow {
+      margin: 0 0 0.8rem;
+      color: var(--color-accent-bright);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0 0 1.4rem;
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3.05rem);
+      font-weight: 700;
+      line-height: 1.18;
+    }
+
+    .section-body {
+      max-width: 38rem;
+      margin: 0;
+      color: var(--color-text-muted);
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+
+    .intro {
+      max-width: 42rem;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .intro .section-body {
+      margin-inline: auto;
+    }
+
+    .rule {
+      width: 3rem;
+      height: 2px;
+      margin: 0 0 1.8rem;
+      background: var(--color-accent);
+    }
+
+    .intro .rule,
+    .contacto .rule {
+      margin-inline: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.9rem;
+      padding: 0.85rem 2.3rem;
+      border: 1.5px solid currentColor;
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-text);
+      color: var(--color-bg);
+    }
+
+    .btn-accent {
+      border-color: var(--color-accent);
+      background: var(--color-accent);
+    }
+
+    .btn-accent:hover {
+      border-color: var(--color-accent-bright);
+      background: var(--color-accent-bright);
+    }
+
+    .site-nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: var(--nav-height);
+      padding: 1rem 4vw;
+      border-bottom: 1px solid rgba(232, 223, 192, 0.08);
+      background: rgba(13, 27, 42, 0.9);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      letter-spacing: 0.16em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-brand-logo {
+      width: auto;
+      height: 34px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: clamp(1.2rem, 2.6vw, 2.2rem);
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(232, 223, 192, 0.72);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-text);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 2.75rem;
+      height: 2.75rem;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-subtle);
+      background: transparent;
+      color: var(--color-text);
+      cursor: pointer;
+    }
+
+    .nav-toggle-lines {
+      display: grid;
+      gap: 5px;
+      width: 24px;
+    }
+
+    .nav-toggle-lines span {
+      display: block;
+      height: 1.5px;
+      background: currentColor;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-lines span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-lines span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-lines span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 100svh;
+      place-items: center;
+      overflow: hidden;
+      padding: calc(var(--nav-height) + 4rem) 0 5rem;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 28%, rgba(46, 79, 121, 0.82) 0%, rgba(13, 27, 42, 0) 58%),
+        var(--color-bg);
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      justify-items: center;
+    }
+
+    .seal-wrapper {
+      width: min(300px, 65vw);
+      margin-bottom: 2.7rem;
+    }
+
+    .seal-img {
+      width: 100%;
+      height: auto;
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6.25rem);
+      font-weight: 900;
+      line-height: 0.98;
+    }
+
+    .hero-statement {
+      margin: 1.1rem 0 0;
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 4vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.12;
+    }
+
+    .hero-statement em {
+      color: rgba(232, 223, 192, 0.64);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      max-width: 38rem;
+      margin: 1.5rem 0 2.7rem;
+      color: var(--color-text-muted);
+      font-size: 1.05rem;
+      line-height: 1.78;
+    }
+
+    .historia,
+    .cobertura {
+      background: var(--color-surface);
+    }
+
+    .historia-timeline {
+      display: grid;
+      gap: 1.8rem;
+      margin: 0;
+      padding: 1rem 0 0;
+      list-style: none;
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 2.25rem minmax(0, 1fr);
+      gap: 1.2rem;
+    }
+
+    .timeline-item:not(:last-child)::before {
+      position: absolute;
+      top: 2.25rem;
+      bottom: -1.8rem;
+      left: 1.1rem;
+      width: 1px;
+      content: "";
+      background: rgba(232, 223, 192, 0.15);
+    }
+
+    .timeline-marker {
+      display: inline-flex;
+      width: 2.25rem;
+      height: 2.25rem;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--color-accent);
+      border-radius: 999px;
+      color: var(--color-accent-bright);
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .timeline-content h3 {
+      margin: 0 0 0.3rem;
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-size: 1rem;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: rgba(232, 223, 192, 0.57);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .marcas {
+      background: var(--color-bg);
+    }
+
+    .marcas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1px;
+      margin-top: 3.5rem;
+      border: 1px solid rgba(232, 223, 192, 0.11);
+      background: rgba(232, 223, 192, 0.11);
+    }
+
+    .marcas-cta {
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .coffee-card {
+      position: relative;
+      height: 33rem;
+      border: 0;
+      background: var(--color-surface);
+      color: var(--color-text);
+      cursor: pointer;
+      perspective: 1000px;
+      transition: transform 0.25s ease;
+    }
+
+    .coffee-card:hover,
+    .coffee-card:focus-visible {
+      transform: translateY(-4px);
+    }
+
+    .coffee-card:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 3px;
+    }
+
+    .coffee-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.7s ease;
+    }
+
+    .coffee-card.is-flipped .coffee-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .coffee-card-front,
+    .coffee-card-back {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 2.3rem 2rem;
+      overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .coffee-card-front {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .coffee-card-front::after {
+      position: absolute;
+      inset: auto 0 0;
+      height: 2px;
+      content: "";
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.3s ease;
+    }
+
+    .coffee-card:hover .coffee-card-front::after,
+    .coffee-card:focus-visible .coffee-card-front::after {
+      transform: scaleX(1);
+    }
+
+    .coffee-card-back {
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      transform: rotateY(180deg);
+    }
+
+    .coffee-origin {
+      margin-bottom: 0.65rem;
+      color: var(--color-accent-bright);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .coffee-card h3 {
+      margin: 0 0 0.75rem;
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-size: 1.28rem;
+      line-height: 1.2;
+    }
+
+    .coffee-card p {
+      margin: 0;
+      color: rgba(232, 223, 192, 0.58);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    .coffee-card-tech-sep {
+      width: 70%;
+      height: 1px;
+      margin: 1.55rem 0 1.25rem;
+      background: rgba(232, 223, 192, 0.14);
+      flex-shrink: 0;
+    }
+
+    .coffee-card-tech {
+      display: grid;
+      gap: 0.72rem;
+      margin: 0;
+      padding: 0;
+      color: rgba(232, 223, 192, 0.68);
+      font-size: 0.82rem;
+      line-height: 1.45;
+      list-style: none;
+    }
+
+    .coffee-card-tech span {
+      display: block;
+      color: var(--color-text-soft);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .coffee-card-cta,
+    .coffee-card-back-return {
+      margin-top: auto;
+      padding-top: 1rem;
+      color: rgba(232, 223, 192, 0.62);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .coffee-card-bag {
+      width: 100%;
+      max-height: 68%;
+      margin: 0.3rem 0 0.9rem;
+      object-fit: contain;
+    }
+
+    .coffee-card-back-name {
+      margin: 0.15rem 0 0.5rem;
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      line-height: 1.25;
+    }
+
+    .region-list {
+      display: grid;
+      gap: 0;
+      margin: 2rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .region-list li {
+      display: flex;
+      gap: 0.9rem;
+      align-items: baseline;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(232, 223, 192, 0.08);
+      color: rgba(232, 223, 192, 0.72);
+      font-size: 0.93rem;
+    }
+
+    .region-list li::before {
+      position: relative;
+      top: -1px;
+      flex: 0 0 auto;
+      color: var(--color-accent);
+      content: "◆";
+      font-size: 0.42rem;
+    }
+
+    .region-list strong {
+      color: var(--color-text);
+      font-weight: 800;
+    }
+
+    .clientes-box,
+    .quote-box {
+      border: 1px solid var(--border-subtle);
+      background: rgba(13, 27, 42, 0.16);
+      padding: 2.2rem;
+    }
+
+    .clientes-box h3 {
+      margin: 0 0 1.2rem;
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+    }
+
+    .client-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .client-tag {
+      border: 1px solid rgba(232, 223, 192, 0.22);
+      padding: 0.35rem 0.9rem;
+      color: rgba(232, 223, 192, 0.62);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .quote-box {
+      margin-top: 2rem;
+    }
+
+    .quote-box p {
+      margin: 0;
+      color: rgba(232, 223, 192, 0.58);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .contacto {
+      background: var(--color-bg);
+      text-align: center;
+    }
+
+    .contacto .section-title,
+    .contacto .section-body {
+      margin-inline: auto;
+    }
+
+    .contacto .section-body {
+      margin-bottom: 3rem;
+    }
+
+    .contact-card {
+      width: min(100%, 35rem);
+      margin-inline: auto;
+      border: 1.5px solid rgba(232, 223, 192, 0.18);
+      background: rgba(27, 42, 62, 0.38);
+      box-shadow: var(--shadow-card);
+      padding: clamp(2rem, 5vw, 2.8rem) clamp(1.5rem, 6vw, 3.5rem);
+      font-style: normal;
+    }
+
+    .contact-header {
+      display: grid;
+      gap: 0.7rem;
+      justify-items: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .contact-name {
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      line-height: 1.15;
+    }
+
+    .contact-items {
+      display: grid;
+      gap: 1rem;
+      margin: 1.2rem 0 1.75rem;
+    }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 5.5rem minmax(0, 1fr);
+      gap: 1rem;
+      align-items: baseline;
+      color: rgba(232, 223, 192, 0.74);
+      text-align: left;
+    }
+
+    .contact-label {
+      color: var(--color-text-soft);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .contact-item a {
+      color: rgba(232, 223, 192, 0.82);
+      overflow-wrap: anywhere;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-item a:hover {
+      color: var(--color-text);
+    }
+
+    footer {
+      border-top: 1px solid rgba(232, 223, 192, 0.08);
+      background: var(--color-bg);
+      padding: 2.2rem 0;
+    }
+
+    .footer-wrap {
+      display: grid;
+      gap: 1rem;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .footer-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      transition: transform 0.25s ease;
+    }
+
+    .footer-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .footer-title {
+      color: rgba(232, 223, 192, 0.66);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .footer-sub,
+    .footer-pill,
+    .footer-note {
+      margin: 0;
+      color: rgba(232, 223, 192, 0.58);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .footer-pill {
+      font-size: 0.83rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .footer-note {
+      color: rgba(232, 223, 192, 0.36);
+      font-size: 0.85rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cobertura .section-grid {
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --nav-height: 68px;
+      }
+
+      .container {
+        width: min(calc(100% - 10vw), var(--container));
+      }
+
+      .section {
+        padding: 4.5rem 0;
+      }
+
+      .site-nav {
+        padding: 0.75rem 5vw;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 0.7rem);
+        right: 5vw;
+        left: 5vw;
+        display: grid;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        border: 1px solid rgba(232, 223, 192, 0);
+        background: rgba(13, 27, 42, 0.98);
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        transition: max-height 0.25s ease, opacity 0.2s ease, visibility 0.2s ease, border-color 0.2s ease;
+      }
+
+      .nav-links.is-open {
+        max-height: 22rem;
+        border-color: rgba(232, 223, 192, 0.12);
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+      }
+
+      .nav-links li + li {
+        border-top: 1px solid rgba(232, 223, 192, 0.08);
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 0.85rem 1rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: calc(var(--nav-height) + 3.5rem) 0 4rem;
+      }
+
+      .marcas-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .coffee-card {
+        height: 32rem;
+      }
+
+      .contact-item {
+        grid-template-columns: 1fr;
+        gap: 0.15rem;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .nav-brand {
+        max-width: 72vw;
+        letter-spacing: 0.1em;
+      }
+
+      .marcas-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .coffee-card {
+        height: 31rem;
+      }
+
+      .clientes-box,
+      .quote-box {
+        padding: 1.6rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <nav class="site-nav" aria-label="Navegación principal">
+    <a class="nav-brand" href="#inicio" aria-label="Café Tico, inicio">
+      <img class="nav-brand-logo" src="img/redlogo.png" alt="" width="34" height="34" />
+      <span>Café Tico</span>
+    </a>
+
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      type="button"
+      aria-label="Abrir menú"
+      aria-controls="navLinks"
+      aria-expanded="false"
+    >
+      <span class="nav-toggle-lines" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#historia">Nuestra historia</a></li>
+      <li><a href="#cafes">Nuestros cafés</a></li>
+      <li><a href="#cobertura">Cobertura</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="container hero-inner">
+        <div class="seal-wrapper reveal">
+          <img
+            class="seal-img"
+            src="img/redlogo.png"
+            alt="Café Tico"
+            width="300"
+            height="300"
+            fetchpriority="high"
+          />
+        </div>
+        <p class="hero-eyebrow reveal">Distribución en Centro y NEA de Argentina · Uruguay · Paraguay · Est. 2001</p>
+        <p class="hero-statement reveal">No es solo café. <em>Es una experiencia.</em></p>
+        <p class="hero-sub reveal">
+          Seleccionamos y traemos directamente desde Costa Rica cafés de especialidad cultivados en algunas de las
+          regiones cafeteras más reconocidas del mundo, donde la naturaleza y la experiencia de generaciones crean
+          perfiles únicos en cada taza.
+        </p>
+        <a href="#cafes" class="btn btn-primary reveal">Conocer las marcas</a>
+      </div>
+    </section>
+
+    <section class="section historia" id="historia">
+      <div class="container section-grid">
+        <div>
+          <p class="section-label reveal">Desde 2001</p>
+          <div class="rule reveal" aria-hidden="true"></div>
+          <h2 class="section-title reveal">Más de dos décadas de<br />excelencia exportadora</h2>
+          <p class="section-body reveal">
+            Desde 2001 llevamos lo mejor de Costa Rica a mercados internacionales. Lo que comenzó con la exportación
+            de frutas tropicales premium hacia América y Europa, hoy continúa con una selección de cafés de especialidad
+            cultivados en las tierras altas del país, donde tradición, origen y excelencia se encuentran en cada taza.
+          </p>
+        </div>
+
+        <ol class="historia-timeline" aria-label="Historia de Café Tico">
+          <li class="timeline-item reveal">
+            <span class="timeline-marker">2001</span>
+            <div class="timeline-content">
+              <h3>Fundación en Heredia</h3>
+              <p>
+                Nacimos en Santa Bárbara de Heredia, Costa Rica, como exportadores de piña premium hacia Estados
+                Unidos, Centroamérica y Europa, estableciendo desde nuestros inicios altos estándares de calidad y
+                trazabilidad.
+              </p>
+            </div>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-marker">02</span>
+            <div class="timeline-content">
+              <h3>Clientes internacionales de referencia</h3>
+              <p>
+                Desarrollamos relaciones comerciales con compañías y cadenas de alcance internacional, incluyendo
+                Royal Caribbean, Carrefour y destacados retailers de Centroamérica.
+              </p>
+            </div>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-marker">03</span>
+            <div class="timeline-content">
+              <h3>Expansión al Cono Sur</h3>
+              <p>
+                Extendimos nuestras operaciones hacia Argentina, consolidando presencia en las regiones Centro y
+                Noreste del país, e incorporando posteriormente los mercados de Uruguay y Paraguay.
+              </p>
+            </div>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-marker">Hoy</span>
+            <div class="timeline-content">
+              <h3>Especialistas en café costarricense premium</h3>
+              <p>
+                Tras años comercializando y distribuyendo en el Cono Sur algunas de las marcas más reconocidas de Costa
+                Rica, como Café Britt y Café Volio, ampliamos nuestra propuesta con una selección propia de cafés de
+                especialidad, incluyendo Cafetico de Altura y Altos del Valle.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section marcas" id="cafes">
+      <div class="container">
+        <div class="intro">
+          <p class="section-label reveal">Selección exclusiva</p>
+          <div class="rule reveal" aria-hidden="true"></div>
+          <h2 class="section-title reveal">Café de origen,<br />de zona, de autor</h2>
+          <p class="section-body reveal">
+            Cada marca que distribuimos proviene de microclimas únicos y de productores con nombre propio. No vendemos
+            commodity: vendemos terroir costarricense.
+          </p>
+        </div>
+
+        <div class="marcas-grid">
+          <article
+            class="coffee-card reveal"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+            aria-label="Ver producto Tierras Altas del Valle"
+            data-coffee-card
+            data-card-title="Tierras Altas del Valle"
+          >
+            <div class="coffee-card-inner">
+              <div class="coffee-card-front" aria-hidden="false">
+                <div class="coffee-origin">Sabanilla · Alajuela</div>
+                <h3>Tierras Altas del Valle</h3>
+                <p>Sabor equilibrado, aroma robusto y dulce a frutas frescas, acidez media, cuerpo cremoso y posgusto.</p>
+                <div class="coffee-card-tech-sep" aria-hidden="true"></div>
+                <ul class="coffee-card-tech" aria-label="Ficha técnica">
+                  <li><span>Origen</span>Sabanilla, Alajuela</li>
+                  <li><span>Altura y variedad</span>1200 msnm · Catuaí</li>
+                  <li><span>Perfil</span>Tueste medio · 80.5 SCA</li>
+                  <li><span>Composición</span>100% arábica</li>
+                </ul>
+                <div class="coffee-card-cta" aria-hidden="true">Ver producto</div>
+              </div>
+              <div class="coffee-card-back" aria-hidden="true">
+                <img
+                  class="coffee-card-bag"
+                  src="img/altosdelvalle.jpeg"
+                  alt="Bolsa de Tierras Altas del Valle"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coffee-card-back-name">Tierras Altas del Valle - 250 gramos</div>
+                <div class="coffee-card-back-return" aria-hidden="true">Volver a la ficha</div>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="coffee-card reveal"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+            aria-label="Ver producto Tarrazú Montecielo"
+            data-coffee-card
+            data-card-title="Tarrazú Montecielo"
+          >
+            <div class="coffee-card-inner">
+              <div class="coffee-card-front" aria-hidden="false">
+                <div class="coffee-origin">Tarrazú · San José</div>
+                <h3>Tarrazú Montecielo</h3>
+                <p>De la región de Tarrazú. Gran carácter, con acidez brillante, dulzura natural y cuerpo balanceado.</p>
+                <div class="coffee-card-tech-sep" aria-hidden="true"></div>
+                <ul class="coffee-card-tech" aria-label="Ficha técnica">
+                  <li><span>Origen</span>Tarrazú, Costa Rica</li>
+                  <li><span>Altura y variedad</span>1450 msnm · Catuaí</li>
+                  <li><span>Perfil</span>Chocolate · Pomelo</li>
+                  <li><span>Composición</span>SHB · 100% arábica</li>
+                </ul>
+                <div class="coffee-card-cta" aria-hidden="true">Ver producto</div>
+              </div>
+              <div class="coffee-card-back" aria-hidden="true">
+                <img
+                  class="coffee-card-bag"
+                  src="img/tarrazu.jpeg"
+                  alt="Bolsa de Tarrazú Montecielo"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coffee-card-back-name">Tarrazú Montecielo - 340 gramos</div>
+                <div class="coffee-card-back-return" aria-hidden="true">Volver a la ficha</div>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="coffee-card reveal"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+            aria-label="Ver producto Tres Ríos Valdivia"
+            data-coffee-card
+            data-card-title="Tres Ríos Valdivia"
+          >
+            <div class="coffee-card-inner">
+              <div class="coffee-card-front" aria-hidden="false">
+                <div class="coffee-origin">Tres Ríos · Cartago</div>
+                <h3>Tres Ríos Valdivia</h3>
+                <p>De los fértiles suelos volcánicos del Irazú. Elegante, con delicadas notas cítricas y frutales.</p>
+                <div class="coffee-card-tech-sep" aria-hidden="true"></div>
+                <ul class="coffee-card-tech" aria-label="Ficha técnica">
+                  <li><span>Origen</span>Tres Ríos, Cartago</li>
+                  <li><span>Altura y variedad</span>1375 msnm · Catuaí</li>
+                  <li><span>Perfil</span>Cítricos · Frutas · Nuez</li>
+                  <li><span>Composición</span>100% café arábica</li>
+                </ul>
+                <div class="coffee-card-cta" aria-hidden="true">Ver producto</div>
+              </div>
+              <div class="coffee-card-back" aria-hidden="true">
+                <img
+                  class="coffee-card-bag"
+                  src="img/tresrios.jpeg"
+                  alt="Bolsa de Tres Ríos Valdivia"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coffee-card-back-name">Tres Ríos Valdivia - 360 gramos</div>
+                <div class="coffee-card-back-return" aria-hidden="true">Volver a la ficha</div>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="coffee-card reveal"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+            aria-label="Ver producto Cafetico de Altura"
+            data-coffee-card
+            data-card-title="Cafetico de Altura"
+          >
+            <div class="coffee-card-inner">
+              <div class="coffee-card-front" aria-hidden="false">
+                <div class="coffee-origin">San Ramón · Alajuela</div>
+                <h3>Cafetico de Altura</h3>
+                <p>Perfil equilibrado, con buen balance entre acidez y dulzura, característico de los cafés de altura.</p>
+                <div class="coffee-card-tech-sep" aria-hidden="true"></div>
+                <ul class="coffee-card-tech" aria-label="Ficha técnica">
+                  <li><span>Origen</span>San Ramón, Alajuela</li>
+                  <li><span>Altura y variedad</span>1200 msnm · Catuaí</li>
+                  <li><span>Proceso</span>Red Honey · 86.2 SCA</li>
+                  <li><span>Composición</span>100% arábica</li>
+                </ul>
+                <div class="coffee-card-cta" aria-hidden="true">Ver producto</div>
+              </div>
+              <div class="coffee-card-back" aria-hidden="true">
+                <img
+                  class="coffee-card-bag"
+                  src="img/cafetico.png"
+                  alt="Bolsa de Cafetico de Altura"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coffee-card-back-name">Cafetico de Altura - 250 gramos y 500 gramos</div>
+                <div class="coffee-card-back-return" aria-hidden="true">Volver a la ficha</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="marcas-cta reveal">
+          <a href="#contacto" class="btn btn-accent">Comprar</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cobertura" id="cobertura">
+      <div class="container section-grid">
+        <div>
+          <p class="section-label reveal">Distribución regional</p>
+          <div class="rule reveal" aria-hidden="true"></div>
+          <h2 class="section-title reveal">Llegamos donde<br />el café importa</h2>
+          <p class="section-body reveal">
+            Nuestra red de distribución cubre el Centro y Noreste de Argentina, Uruguay y Paraguay, con foco en canales
+            gastronómicos, retail especializado y distribuidores mayoristas.
+          </p>
+          <ul class="region-list">
+            <li class="reveal"><strong>Centro de Argentina</strong> Córdoba · Santa Fe · Entre Ríos</li>
+            <li class="reveal"><strong>Noreste Argentino (NEA)</strong> Corrientes · Misiones · Chaco · Formosa</li>
+            <li class="reveal"><strong>Uruguay</strong> Montevideo y distribución nacional</li>
+            <li class="reveal"><strong>Paraguay</strong> Asunción y eje central</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="clientes-box reveal">
+            <h3>Clientes de referencia internacional</h3>
+            <div class="client-tags" aria-label="Clientes y canales de referencia">
+              <span class="client-tag">Royal Caribbean · EEUU</span>
+              <span class="client-tag">Carrefour · Francia</span>
+              <span class="client-tag">HoReCa · Argentina</span>
+              <span class="client-tag">Retail especializado · Centroamérica</span>
+            </div>
+          </div>
+          <blockquote class="quote-box reveal">
+            <p>"Más de dos décadas conectando los mejores productos de Costa Rica con mercados que valoran la excelencia."</p>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contacto" id="contacto">
+      <div class="container">
+        <p class="section-label reveal">Consultas y pedidos</p>
+        <div class="rule reveal" aria-hidden="true"></div>
+        <h2 class="section-title reveal">Hablemos de café</h2>
+        <p class="section-body reveal">
+          ¿Particular, hotel, restaurante, café de especialidad? Consultanos por disponibilidad, muestras y condiciones
+          comerciales.
+        </p>
+
+        <address class="contact-card reveal">
+          <div class="contact-header">
+            <div class="eyebrow">Ventas y distribución</div>
+            <div class="contact-name">Juan Carlos Helwig</div>
+          </div>
+
+          <div class="contact-items">
+            <div class="contact-item">
+              <span class="contact-label">Email</span>
+              <a href="mailto:ventas.cafeticocr@gmail.com">ventas.cafeticocr@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">WhatsApp</span>
+              <a href="https://wa.me/5493426505193" target="_blank" rel="noopener noreferrer">+54 9 342 650 5193</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Instagram</span>
+              <a href="https://instagram.com/cafe.ticocr" target="_blank" rel="noopener noreferrer">@cafe.ticocr</a>
+            </div>
+          </div>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <img class="footer-logo" src="img/logo_rojo1.png" alt="Café Tico" width="60" height="60" loading="lazy" />
+      <div class="footer-title">Café Tico · Costa Rica</div>
+      <p class="footer-sub">Origen · Tradición · Excelencia</p>
+      <p class="footer-pill">Distribución en Centro y NEA de Argentina · Uruguay · Paraguay</p>
+      <p class="footer-note">Desde 2001</p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const navToggle = document.getElementById("navToggle");
+      const navLinks = document.getElementById("navLinks");
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (navToggle && navLinks) {
+        const setMenuState = (isOpen) => {
+          navToggle.setAttribute("aria-expanded", String(isOpen));
+          navToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+          navLinks.classList.toggle("is-open", isOpen);
+        };
+
+        navToggle.addEventListener("click", () => {
+          setMenuState(navToggle.getAttribute("aria-expanded") !== "true");
+        });
+
+        navLinks.addEventListener("click", (event) => {
+          if (event.target.closest("a")) {
+            setMenuState(false);
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            setMenuState(false);
+          }
+        });
+      }
+
+      const revealItems = [...document.querySelectorAll(".reveal")];
+
+      if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+        );
+
+        revealItems.forEach((item) => observer.observe(item));
+      }
+
+      document.querySelectorAll("[data-coffee-card]").forEach((card) => {
+        const front = card.querySelector(".coffee-card-front");
+        const back = card.querySelector(".coffee-card-back");
+        const title = card.dataset.cardTitle || "producto";
+
+        const setFlipped = (isFlipped) => {
+          card.classList.toggle("is-flipped", isFlipped);
+          card.setAttribute("aria-pressed", String(isFlipped));
+          card.setAttribute("aria-label", `${isFlipped ? "Volver a la ficha de" : "Ver producto"} ${title}`);
+          front?.setAttribute("aria-hidden", String(isFlipped));
+          back?.setAttribute("aria-hidden", String(!isFlipped));
+        };
+
+        card.addEventListener("click", () => {
+          setFlipped(!card.classList.contains("is-flipped"));
+        });
+
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setFlipped(!card.classList.contains("is-flipped"));
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
